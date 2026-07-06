@@ -41,26 +41,27 @@ app.get('/roll/:number', function(req, res){
 
 //3. I want that one
 
-app.get('/collectibles/:index' , function(req,res){
+app.get('/collectibles/:index', function (req, res) {
 
-const collectibles = [
+  const collectibles = [
     { name: 'shiny ball', price: 5.95 },
     { name: 'autographed picture of a dog', price: 10 },
     { name: 'vintage 1970s yogurt SOLD AS-IS', price: 0.99 }
-];
+  ];
 
-if (index = collectibles[Number(req.params.index)]){
+  const index = Number(req.params.index);
+  const item = collectibles[index];
 
-    res.send(index)
-}
+  if (item) {
 
-else{
+    res.send(`So, you want the ${item.name}? For ${item.price}, it can be yours!`);
 
-    res.send('This item is not yet in stock. Check back soon!')
-}
+  } else {
+    
+    res.send('This item is not yet in stock. Check back soon!');
+  }
 
-})
-
+});
 
 //4. shoes route query
 
